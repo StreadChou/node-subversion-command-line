@@ -1,0 +1,20 @@
+{
+  "name": "node-subversion-command-line",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "module": "src/index.ts",
+  "scripts": {
+    "build": "tsc --build",
+    "patch": "npm run build && npm version patch --no-git-tag-version",
+    "minor": "npm run build && npm version minor --no-git-tag-version",
+    "major": "npm run build && npm version major --no-git-tag-version"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.4"
+  },
+  "dependencies": {
+    "xml-js": "^1.6.11"
+  }
+}

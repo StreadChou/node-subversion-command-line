@@ -12,7 +12,13 @@ export class SubversionList extends AbstractCommand {
 
     /** 生成命令 */
     getCmd(params: SvnListParams) {
-        let cmd = `${this.cml.CommandPath} list ${params.TARGET_REV} `;
+        let cmd!: string;
+        if (params.TARGET_REV) {
+            cmd = `${this.cml.CommandPath} list ${params.TARGET_REV} `;
+        } else {
+            this.checkRepoAbsPathExist();
+            cmd = `${this.cml.CommandPath} list ${this.cml.repo_abs_path} `;
+        }
         cmd = this.cmdAppendOptions(cmd, params);
         return cmd;
     }

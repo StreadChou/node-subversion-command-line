@@ -3,7 +3,7 @@ import {SvnCommandParams} from "../../command/abstract-command";
 
 export interface SvnListParams extends SvnCommandParams {
     /** 目标已经版本  [TARGET[@REV]...] */
-    TARGET_REV: string;
+    TARGET_REV?: string;
     /** 命令行参数 */
     cmdOpt?: SvnListCmdOpt
 }

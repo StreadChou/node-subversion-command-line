@@ -1,10 +1,10 @@
 {
   "name": "node-subversion-command-line",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "module": "src/index.ts",
   "scripts": {
-    "build": "tsc --build",
+    "build": "rm -rf dist && tsc --build",
     "patch": "npm run build && npm version patch --no-git-tag-version",
     "minor": "npm run build && npm version minor --no-git-tag-version",
     "major": "npm run build && npm version major --no-git-tag-version"

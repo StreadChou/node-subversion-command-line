@@ -2,6 +2,8 @@ import {SvnShellOption} from "../../../define";
 import {SvnCommandParams} from "../../command/abstract-command";
 
 export interface SvnCheckoutParams extends SvnCommandParams {
+    /** 是否检查路径 */
+    check_path?: boolean;
     /** 是否创建父级文件夹 */
     mkdir?: boolean;
     /** 命令行参数 */

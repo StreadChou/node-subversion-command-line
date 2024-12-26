@@ -17,13 +17,15 @@ export class SubversionCheckout extends AbstractCommand {
         if (!this.cml.repo_abs_path) throw new PathException(`SVN的远程路径定义错误 repo_abs_path: ${this.cml.repo_abs_path}`)
         if (!this.cml.wc_abs_path) throw new PathException(`SVN的本地路径定义错误 wc_abs_path: ${this.cml.wc_abs_path}`)
 
-        if (fs.existsSync(this.cml.wc_abs_path)) throw new PathException(`目标已经存在 wc_abs_path: ${this.cml.wc_abs_path}`)
-        const dirname = path.dirname(this.cml.wc_abs_path);
-        if (!fs.existsSync(dirname)) {
-            if (!params.mkdir) throw new PathException(`父级目标文件夹不存在 wc_abs_path: ${dirname}`)
-            fs.mkdirSync(dirname, {recursive: true});
-        }
 
+        if (params.check_path) {
+            if (fs.existsSync(this.cml.wc_abs_path)) throw new PathException(`目标已经存在 wc_abs_path: ${this.cml.wc_abs_path}`)
+            const dirname = path.dirname(this.cml.wc_abs_path);
+            if (!fs.existsSync(dirname)) {
+                if (!params.mkdir) throw new PathException(`父级目标文件夹不存在 wc_abs_path: ${dirname}`)
+                fs.mkdirSync(dirname, {recursive: true});
+            }
+        }
 
         let cmd = `${this.cml.CommandPath} checkout ${this.cml.repo_abs_path} ${this.cml.wc_abs_path} `;
         cmd = this.cmdAppendOptions(cmd, params);

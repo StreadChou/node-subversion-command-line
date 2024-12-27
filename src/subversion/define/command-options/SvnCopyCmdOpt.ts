@@ -2,6 +2,8 @@ import {SvnShellOption} from "../../../define";
 import {SvnCommandParams} from "../../command/abstract-command";
 
 export interface SvnCopyParams extends SvnCommandParams {
+    From: string;
+    Target: string;
     /** 命令行参数 */
     cmdOpt?: SvnCopyCmdOpt
 }

@@ -41,6 +41,16 @@ export abstract class AbstractCommand {
         if (!fs.existsSync(this.cml.wc_abs_path)) throw new PathException(`SVN目标路径不存在 wc_abs_path: ${this.cml.wc_abs_path}`)
     }
 
+    /** 保护提交message */
+    protected protectMessage(message: string) {
+        message = message.replace(/\"/g, `\\"`)
+        return `"${message}"`
+    }
+
+    protected isAbsPath(p: string) {
+        if (p.startsWith("http://") || p.startsWith("https://") || p.startsWith("svn://")) return true;
+        return p.startsWith("/");
+    }
 }
 
 export interface SvnCommandParams {

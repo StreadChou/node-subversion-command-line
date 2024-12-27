@@ -15,6 +15,7 @@ import {SubversionCleanup} from "./command/subversion.cleanup";
 import {SubversionLog} from "./command/subversion.log";
 import {SubversionCat} from "./command/subversion.cat";
 import {SubversionCommit} from "./command/subversion.commit";
+import {SubversionCopy} from "./command/subversion.copy";
 
 /** 一个SVN实例 */
 export class SubversionCommandLine {
@@ -40,6 +41,7 @@ export class SubversionCommandLine {
     log: SubversionLog = new SubversionLog(this);
     cat: SubversionCat = new SubversionCat(this);
     commit: SubversionCommit = new SubversionCommit(this);
+    copy: SubversionCopy = new SubversionCopy(this);
 
 
     // 增加所有新增文件, 移除所有删除文件

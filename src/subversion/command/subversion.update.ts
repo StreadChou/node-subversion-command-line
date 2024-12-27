@@ -11,8 +11,7 @@ export class SubversionUpdate extends AbstractCommand {
 
     /** 生成命令 */
     getCmd(params: SvnUpdateParams) {
-        this.checkWcAbsPathExist();
-        let cmd = `${this.cml.CommandPath} update ${this.cml.wc_abs_path} `;
+        let cmd = `${this.cml.CommandPath} update ${params.Path || this.cml.wc_abs_path} `;
         cmd = this.cmdAppendOptions(cmd, params);
         return cmd;
     }

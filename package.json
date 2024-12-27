@@ -1,6 +1,6 @@
 {
   "name": "node-subversion-command-line",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/index.js",
   "module": "src/index.ts",
   "scripts": {

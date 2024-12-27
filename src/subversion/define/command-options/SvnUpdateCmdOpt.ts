@@ -3,6 +3,7 @@ import {SvnCommandParams} from "../../command/abstract-command";
 import {SvnCleanupCmdOpt} from "./SvnCleanupCmdOpt";
 
 export interface SvnUpdateParams extends SvnCommandParams {
+    Path?: string;
     /** 命令行参数 */
     cmdOpt?: SvnUpdateCmdOpt
     /** 如果被锁住,执行多少次 */

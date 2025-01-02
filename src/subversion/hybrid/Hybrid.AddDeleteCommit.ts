@@ -11,6 +11,7 @@ export class HybridAddDeleteCommit extends AbstractHybrid {
 
     public async run(opt: OptAddDeleteCommit) {
         const status = this.cml.status.xmlToJson(await this.cml.status.run({cmdOpt: {xml: true}}));
+        if (!status.status.target.entry) return {status_list: [], changeList: [], commitRes: "NoChange"}
         const status_list: SvnStatusEntry[] = Array.isArray(status.status.target.entry) ? status.status.target.entry : [status.status.target.entry];
 
         /** 需要提交的类型列表 */

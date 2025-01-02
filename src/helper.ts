@@ -2,6 +2,7 @@ import {SvnShellOption} from "./define";
 import {ChildProcessWithoutNullStreams, spawn} from 'child_process';
 import {ExecException, ExecOptions} from "child_process";
 import {StdException} from "./exception/StdException";
+import {SubversionCommandLineConfig} from "./index";
 
 
 /** 将Object转换为命令行参数 */
@@ -25,6 +26,8 @@ export async function execute(
     options?: { encoding: "buffer" | null; } & ExecOptions,
     callback?: (error: Error | null, stdout: string, stderr: string) => void
 ): Promise<string> {
+    if (SubversionCommandLineConfig.logger_cmd) console.log(command);
+
     return new Promise<string>((resolve, reject) => {
 
         const childProcess: ChildProcessWithoutNullStreams = spawn(command, {

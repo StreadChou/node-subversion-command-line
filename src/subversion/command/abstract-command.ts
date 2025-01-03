@@ -35,12 +35,6 @@ export abstract class AbstractCommand {
         if (!this.cml.repo_abs_path) throw new PathException(`SVN远端路径未定义 repo_abs_path: ${this.cml.repo_abs_path}`)
     }
 
-    /** 检查本地仓库路径是否存在 */
-    protected checkWcAbsPathExist() {
-        if (!this.cml.wc_abs_path) throw new PathException(`SVN的本地路径定义错误 wc_abs_path: ${this.cml.wc_abs_path}`)
-        if (!fs.existsSync(this.cml.wc_abs_path)) throw new PathException(`SVN目标路径不存在 wc_abs_path: ${this.cml.wc_abs_path}`)
-    }
-
     /** 保护提交message */
     protected protectMessage(message: string) {
         message = message.replace(/\"/g, `\\"`)

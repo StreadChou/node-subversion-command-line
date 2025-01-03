@@ -11,7 +11,6 @@ export class SubversionDelete extends AbstractCommand {
 
     /** 生成命令 */
     getCmd(params: SvnDeleteParams) {
-        this.checkWcAbsPathExist();
         if (params.cmdOpt?.message) params.cmdOpt.message = this.protectMessage(params.cmdOpt.message)
         let cmd!: string;
         if (this.isAbsPath(params.PATH)) {

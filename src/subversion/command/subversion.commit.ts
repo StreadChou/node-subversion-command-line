@@ -11,7 +11,6 @@ export class SubversionCommit extends AbstractCommand {
 
     /** 生成命令 */
     getCmd(params: SvnCommitParams) {
-        this.checkWcAbsPathExist();
         if (params.cmdOpt?.message) {
             let message = <string>params.cmdOpt.message;
             message = message.replace(/\"/g, `\\"`)

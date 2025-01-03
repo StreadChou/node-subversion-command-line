@@ -13,7 +13,6 @@ export class SubversionStatus extends AbstractCommand {
 
     /** 生成命令 */
     getCmd(params: SvnStatusParams) {
-        this.checkWcAbsPathExist();
         let cmd = `${this.cml.CommandPath} status ${this.cml.wc_abs_path} `;
         cmd = this.cmdAppendOptions(cmd, params);
         return cmd;

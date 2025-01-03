@@ -1,6 +1,6 @@
 import {AbstractCommand} from "./abstract-command";
 import {SubversionCommandLine} from "../subversion-command-line";
-import {SvnCleanupParams} from "../define/command-options";
+import {SvnCleanupParams} from "../define";
 import {execute} from "../../helper";
 
 export class SubversionCleanup extends AbstractCommand {
@@ -11,7 +11,6 @@ export class SubversionCleanup extends AbstractCommand {
 
     /** 生成命令 */
     getCmd(params: SvnCleanupParams) {
-        this.checkWcAbsPathExist();
         let cmd!: string;
         if (params.PATH) {
             cmd = `cd ${this.cml.wc_abs_path} && ${this.cml.CommandPath} cleanup ${params.PATH} `

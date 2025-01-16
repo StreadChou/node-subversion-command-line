@@ -11,7 +11,11 @@ export class SubversionRevert extends AbstractCommand {
 
     /** 生成命令 */
     getCmd(params: SvnRevertParams) {
-        let cmd = `cd ${this.cml.wc_abs_path} && ${this.cml.CommandPath} revert ${params.PATH} `;
+        let cmd = ``;
+        if (params?.relativePath) {
+            cmd += `cd ${this.cml.wc_abs_path} && `;
+        }
+        cmd += `${this.cml.CommandPath} revert ${params.PATH} `;
         cmd = this.cmdAppendOptions(cmd, params);
         return cmd;
     }

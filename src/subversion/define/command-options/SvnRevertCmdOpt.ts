@@ -4,6 +4,8 @@ import {SvnCommandParams} from "../../command/abstract-command";
 export interface SvnRevertParams extends SvnCommandParams {
     /** 需要add的文件 */
     PATH: string,
+    /** 是否使用相对路径 */
+    relativePath?: boolean;
     /** 命令行参数 */
     cmdOpt?: SvnRevertCmdOpt
 }
